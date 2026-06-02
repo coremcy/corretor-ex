@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rômulo Rogério — Corretor de planos de saúde. SulAmérica, Amil, Bradesco, Unimed, Hapvida e mais. Cotação rápida no WhatsApp.">
+    <title>Rômulo Rogério | Corretor de Planos de Saúde — Cotação Grátis</title>
+
+    <style>
+        /* ===== Reset & Base ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* Paleta Dark Premium */
+            --bg-base: #0a0f1c;
+            --bg-elevado: #111726;
+            --bg-card: #161d31;
+            --bg-card-hover: #1c2540;
+            --borda: #232b45;
+            --borda-clara: #2d3654;
+
+            --azul-primario: #4a90e2;
+            --azul-claro: #6ba8f0;
+            --azul-glow: rgba(74, 144, 226, 0.25);
+
+            --dourado: #ffc861;
+            --dourado-glow: rgba(255, 200, 97, 0.3);
+            --laranja-destaque: #ff8a3d;
+
+            --verde-acao: #1ea952;
+            --verde-acao-hover: #178a43;
+            --verde-glow: rgba(30, 169, 82, 0.18);
+
+            --branco: #ffffff;
+            --texto-principal: #e8edf7;
+            --texto-secundario: #a4afc7;
+            --texto-suave: #7a8499;
+
+            --amarelo-star: #ffb800;
+
+            --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --sombra-md: 0 4px 18px rgba(0, 0, 0, 0.4);
+            --sombra-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--texto-secundario);
+            background: var(--bg-base);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 { color: var(--texto-principal); line-height: 1.25; }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ===== Top Bar ===== */
+        .top-bar {
+            background: #060912;
+            color: var(--texto-secundario);
+            font-size: 13px;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--borda);
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar-info { display: flex; gap: 22px; flex-wrap: wrap; }
+        .top-bar-info span { display: inline-flex; align-items: center; gap: 6px; }
+        .top-bar-social { display: flex; gap: 12px; }
+        .top-bar-social a {
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+            font-size: 14px;
+        }
+        .top-bar-social a:hover { opacity: 1; color: var(--dourado); }
+
+        /* ===== Header ===== */
+        .header {
+            background: rgba(10, 15, 28, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--borda);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--texto-principal);
+        }
+        .logo-icone {
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-claro));
+            color: var(--branco);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 16px var(--azul-glow);
+        }
+        .logo small {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--texto-suave);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .header-acoes { display: flex; gap: 12px; align-items: center; }
+        .btn-telefone {
+            color: var(--texto-principal);
+            font-weight: 700;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .btn-telefone:hover { color: var(--dourado); }
+        .btn-whatsapp-header {
+            background: var(--verde-acao);
+            color: var(--branco) !important;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .btn-whatsapp-header:hover { background: var(--verde-acao-hover); }
+
+        /* ===== Hero ===== */
+        .hero {
+            background:
+                radial-gradient(circle at 75% 25%, rgba(74, 144, 226, 0.18) 0%, transparent 55%),
+                radial-gradient(circle at 20% 80%, rgba(255, 200, 97, 0.10) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.06) 0%, transparent 70%),
+                var(--bg-base);
+            color: var(--texto-principal);
+            padding: 90px 0 100px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .hero-conteudo {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(74, 144, 226, 0.08);
+            border: 1px solid rgba(74, 144, 226, 0.25);
+            color: var(--texto-principal);
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 26px;
+            backdrop-filter: blur(6px);
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--texto-principal);
+            line-height: 1.2;
+            margin-bottom: 22px;
+            letter-spacing: -0.3px;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 .destaque {
+            color: var(--texto-principal);
+            font-weight: 700;
+        }
+        .hero-subtitulo {
+            font-size: 18px;
+            color: var(--texto-secundario);
+            margin: 0 auto 36px;
+            max-width: 620px;
+            line-height: 1.65;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 38px;
+            justify-content: center;
+        }
+        .btn-primario {
+            background: var(--verde-acao);
+            color: var(--branco);
+            padding: 15px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-primario:hover {
+            background: var(--verde-acao-hover);
+        }
+        .btn-primario:active { transform: translateY(1px); }
+
+        .btn-secundario {
+            background: transparent;
+            color: var(--texto-principal);
+            padding: 15px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1.5px solid var(--borda-clara);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-secundario:hover {
+            background: var(--bg-card);
+            border-color: var(--azul-primario);
+        }
+
+        .hero-selos {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-selo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--texto-secundario);
+        }
+        .hero-selo .check {
+            background: var(--verde-acao);
+            color: var(--branco);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* ===== Stats ===== */
+        .stats {
+            background: var(--bg-elevado);
+            padding: 44px 0;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-numero {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--texto-principal);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: var(--texto-suave);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== Section base ===== */
+        .secao { padding: 80px 0; }
+        .secao-alt { background: var(--bg-elevado); }
+        .secao-titulo { text-align: center; margin-bottom: 50px; }
+        .secao-titulo .sobretitulo {
+            color: var(--texto-suave);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .secao-titulo h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            color: var(--texto-principal);
+        }
+        .secao-titulo p {
+            font-size: 17px;
+            color: var(--texto-secundario);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Tipos de plano ===== */
+        .tipos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+        .tipo-card {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 34px 26px;
+            text-align: center;
+            border: 1px solid var(--borda);
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, background 0.25s;
+            position: relative;
+        }
+        .tipo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-lg);
+            border-color: var(--azul-primario);
+            background: var(--bg-card-hover);
+        }
+        .tipo-card .icone {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(74,144,226,0.15), rgba(255,200,97,0.1));
+            color: var(--azul-claro);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+            border: 1px solid var(--borda-clara);
+        }
+        .tipo-card h3 {
+            font-size: 19px;
+            color: var(--texto-principal);
+            margin-bottom: 10px;
+        }
+        .tipo-card p { font-size: 14px; line-height: 1.6; color: var(--texto-secundario); }
+        .tipo-card .tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--verde-acao);
+            color: var(--branco);
+            padding: 4px 11px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        /* ===== Como funciona ===== */
+        .passos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .passo-card {
+            text-align: center;
+            padding: 32px 22px;
+            background: var(--bg-card);
+            border-radius: 18px;
+            border: 1px solid var(--borda);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .passo-card:hover {
+            border-color: var(--azul-primario);
+            transform: translateY(-4px);
+        }
+        .passo-numero {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-claro));
+            color: var(--branco);
+            font-size: 30px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            box-shadow: 0 8px 24px var(--azul-glow);
+        }
+        .passo-card h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+            color: var(--texto-principal);
+        }
+        .passo-card p { font-size: 15px; color: var(--texto-secundario); }
+
+        /* ===== Operadoras ===== */
+        .operadoras-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .operadora-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            padding: 26px 16px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--borda);
+            transition: transform 0.2s, border-color 0.2s, background 0.2s;
+            text-align: center;
+            position: relative;
+        }
+        .operadora-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--azul-primario);
+            background: var(--bg-card-hover);
+        }
+        .operadora-nome {
+            color: var(--texto-principal);
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== Formulário ===== */
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 0;
+            align-items: stretch;
+            background: var(--bg-card);
+            border-radius: 22px;
+            box-shadow: var(--sombra-lg);
+            overflow: hidden;
+            margin-top: 30px;
+            border: 1px solid var(--borda);
+        }
+        .form-info {
+            background:
+                radial-gradient(circle at 30% 20%, rgba(74,144,226,0.18) 0%, transparent 55%),
+                linear-gradient(160deg, #0c1428 0%, #1a2547 100%);
+            color: var(--texto-principal);
+            padding: 54px 42px;
+            border-right: 1px solid var(--borda);
+        }
+        .form-info h3 {
+            color: var(--texto-principal);
+            font-size: 26px;
+            margin-bottom: 14px;
+            font-weight: 800;
+        }
+        .form-info > p {
+            color: var(--texto-secundario);
+            margin-bottom: 30px;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .form-info ul { list-style: none; margin-bottom: 30px; }
+        .form-info ul li {
+            padding: 9px 0;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--texto-principal);
+        }
+        .form-info ul li::before {
+            content: '✓';
+            background: var(--verde-acao);
+            color: var(--branco);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        .form-info-contato {
+            padding-top: 24px;
+            border-top: 1px solid var(--borda-clara);
+            font-size: 14px;
+            color: var(--texto-secundario);
+        }
+        .form-info-contato strong {
+            display: block;
+            font-size: 19px;
+            margin-bottom: 6px;
+            color: var(--texto-principal);
+        }
+
+        .formulario {
+            padding: 54px 42px;
+            background: var(--bg-card);
+        }
+        .formulario h3 {
+            color: var(--texto-principal);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .formulario > p { margin-bottom: 28px; font-size: 14px; color: var(--texto-secundario); }
+
+        .form-grupo { margin-bottom: 18px; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .form-grupo label {
+            display: block;
+            font-weight: 600;
+            color: var(--texto-principal);
+            margin-bottom: 8px;
+            font-size: 13px;
+            letter-spacing: 0.2px;
+        }
+        .form-grupo label .obrigatorio { color: #ff7070; }
+        .form-grupo input,
+        .form-grupo select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1.5px solid var(--borda-clara);
+            border-radius: 10px;
+            font-size: 15px;
+            background: var(--bg-elevado);
+            color: var(--texto-principal);
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            font-family: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .form-grupo select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a4afc7' stroke-width='2.5'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        .form-grupo input:focus,
+        .form-grupo select:focus {
+            outline: none;
+            border-color: var(--azul-primario);
+            box-shadow: 0 0 0 3px var(--azul-glow);
+            background: var(--bg-base);
+        }
+        .form-grupo input::placeholder { color: var(--texto-suave); }
+        .form-grupo select option { background: var(--bg-elevado); color: var(--texto-principal); }
+
+        /* Radio "Já possui plano" estilizado como pílulas */
+        .pill-grupo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .pill-grupo input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .pill-grupo label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            border: 1.5px solid var(--borda-clara);
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: center;
+            margin-bottom: 0;
+            background: var(--bg-elevado);
+        }
+        .pill-grupo input[type="radio"]:checked + label {
+            background: var(--azul-primario);
+            color: var(--branco);
+            border-color: var(--azul-primario);
+            box-shadow: 0 4px 14px var(--azul-glow);
+        }
+        .pill-grupo label:hover { border-color: var(--azul-primario); color: var(--texto-principal); }
+
+        .btn-enviar {
+            width: 100%;
+            background: var(--verde-acao);
+            color: var(--branco);
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: inherit;
+        }
+        .btn-enviar:hover { background: var(--verde-acao-hover); }
+        .btn-enviar:active { transform: translateY(1px); }
+        .form-aviso {
+            text-align: center;
+            font-size: 12px;
+            color: var(--texto-suave);
+            margin-top: 14px;
+        }
+
+        /* ===== Depoimentos ===== */
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .depoimento-card {
+            background: var(--bg-card);
+            padding: 30px 28px;
+            border-radius: 18px;
+            border: 1px solid var(--borda);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .depoimento-card:hover {
+            border-color: var(--dourado);
+            transform: translateY(-4px);
+        }
+        .estrelas { color: var(--amarelo-star); font-size: 17px; letter-spacing: 2px; }
+        .depoimento-card .texto {
+            font-size: 15px;
+            font-style: italic;
+            line-height: 1.65;
+            color: var(--texto-principal);
+        }
+        .depoimento-pessoa {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-top: 1px solid var(--borda);
+            padding-top: 16px;
+        }
+        .avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-claro));
+            color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 4px 14px var(--azul-glow);
+        }
+        .depoimento-pessoa strong {
+            display: block;
+            color: var(--texto-principal);
+            font-size: 15px;
+        }
+        .depoimento-pessoa small { color: var(--texto-suave); font-size: 13px; }
+
+        /* ===== CTA final ===== */
+        .cta-final {
+            background:
+                radial-gradient(circle at 50% 50%, rgba(74,144,226,0.15) 0%, transparent 70%),
+                linear-gradient(135deg, #0a1428 0%, #1a2547 100%);
+            color: var(--texto-principal);
+            padding: 70px 0;
+            text-align: center;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+        .cta-final h2 {
+            color: var(--texto-principal);
+            font-size: 34px;
+            margin-bottom: 14px;
+        }
+        .cta-final p {
+            font-size: 17px;
+            color: var(--texto-secundario);
+            margin: 0 auto 30px;
+            max-width: 600px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #060912;
+            color: var(--texto-secundario);
+            padding: 56px 0 22px;
+            font-size: 14px;
+            border-top: 1px solid var(--borda);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 36px;
+        }
+        .footer h4 {
+            color: var(--texto-principal);
+            font-size: 14px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer p, .footer li { line-height: 1.85; font-size: 14px; }
+        .footer ul { list-style: none; }
+        .footer a { transition: color 0.2s; }
+        .footer a:hover { color: var(--dourado); }
+        .footer .logo { color: var(--texto-principal); margin-bottom: 16px; }
+        .footer .logo small { color: var(--texto-suave); }
+        .footer-redes { display: flex; gap: 10px; margin-top: 16px; }
+        .footer-redes a {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .footer-redes a:hover {
+            border-color: var(--dourado);
+            transform: translateY(-2px);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--borda);
+            padding-top: 22px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--texto-suave);
+        }
+
+        /* ===== Botão WhatsApp flutuante (desktop) ===== */
+        .whats-flutuante {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: var(--verde-acao);
+            color: var(--branco);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            z-index: 99;
+            transition: background 0.2s;
+        }
+        .whats-flutuante:hover { background: var(--verde-acao-hover); }
+
+        /* ===== Barra fixa inferior (mobile) ===== */
+        .barra-mobile {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 15, 28, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid var(--borda);
+            padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+            z-index: 99;
+            gap: 10px;
+            box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.5);
+        }
+        .barra-mobile .btn-cotar {
+            flex: 1;
+            background: var(--verde-acao);
+            color: var(--branco);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .barra-mobile .btn-ligar {
+            background: var(--bg-card);
+            color: var(--texto-principal);
+            border: 1.5px solid var(--borda-clara);
+            width: 58px;
+            height: 58px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        /* ===== Responsivo ===== */
+        @media (max-width: 960px) {
+            .hero { padding: 70px 0 80px; }
+            .hero h1 { font-size: 34px; }
+            .form-wrapper { grid-template-columns: 1fr; }
+            .form-info { border-right: none; border-bottom: 1px solid var(--borda); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .tipos-grid { grid-template-columns: repeat(2, 1fr); }
+            .passos-grid { grid-template-columns: 1fr; gap: 20px; }
+            .operadoras-grid { grid-template-columns: repeat(4, 1fr); }
+            .depoimentos-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+        }
+
+        @media (max-width: 600px) {
+            /* Top bar oculta no mobile pra economizar espaço */
+            .top-bar { display: none; }
+
+            .header { padding: 12px 0; }
+            .header .container { gap: 10px; }
+            .header-acoes { gap: 8px; }
+            .btn-telefone { display: none; } /* tem na barra fixa */
+            .btn-whatsapp-header { padding: 11px 16px; font-size: 13px; }
+            .logo { font-size: 17px; }
+            .logo-icone { width: 38px; height: 38px; font-size: 20px; }
+            .logo small { font-size: 10px; }
+
+            .hero { padding: 48px 0 56px; }
+            .hero h1 { font-size: 26px; }
+            .hero-subtitulo { font-size: 15px; margin-bottom: 28px; }
+            .badge { font-size: 12px; padding: 7px 14px; margin-bottom: 20px; }
+
+            /* CTAs MAIORES no mobile pra toque fácil */
+            .btn-primario, .btn-secundario {
+                padding: 17px 24px;
+                font-size: 16px;
+                width: 100%;
+                justify-content: center;
+                min-height: 56px;
+            }
+            .hero-ctas { flex-direction: column; gap: 12px; margin-bottom: 28px; }
+            .hero-selos { flex-direction: column; gap: 12px; align-items: center; }
+            .hero-selo { font-size: 13px; }
+
+            /* Espaçamento menor entre seções no mobile */
+            .secao { padding: 44px 0; }
+            .secao-titulo { margin-bottom: 32px; }
+            .secao-titulo h2 { font-size: 24px; }
+            .secao-titulo p { font-size: 14px; }
+            .stats { padding: 32px 0; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+            .stat-numero { font-size: 30px; }
+            .stat-label { font-size: 13px; }
+
+            .tipos-grid { grid-template-columns: 1fr; gap: 14px; }
+            .tipo-card { padding: 26px 22px; text-align: left; display: flex; align-items: center; gap: 18px; }
+            .tipo-card .icone { margin: 0; width: 56px; height: 56px; font-size: 26px; flex-shrink: 0; }
+            .tipo-card h3 { margin-bottom: 4px; font-size: 17px; }
+            .tipo-card p { font-size: 13px; }
+            .tipo-card .tag { top: 12px; right: 12px; font-size: 10px; }
+
+            .operadoras-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .operadora-card { min-height: 70px; padding: 18px 12px; }
+            .operadora-nome { font-size: 15px; }
+
+            .form-info, .formulario { padding: 32px 22px; }
+            .form-info h3, .formulario h3 { font-size: 22px; }
+
+            /* Inputs maiores e mais espaçados no mobile */
+            .form-grupo { margin-bottom: 16px; }
+            .form-grupo input,
+            .form-grupo select {
+                padding: 15px 14px;
+                font-size: 16px; /* 16px previne zoom auto do iOS */
+                min-height: 52px;
+            }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+
+            /* Pílulas "Já possui plano" empilhadas e maiores */
+            .pill-grupo { grid-template-columns: 1fr; gap: 8px; }
+            .pill-grupo label {
+                padding: 16px 12px;
+                font-size: 15px;
+                min-height: 52px;
+            }
+
+            .btn-enviar {
+                padding: 18px;
+                font-size: 17px;
+                min-height: 58px;
+            }
+
+            .depoimento-card { padding: 24px 22px; }
+            .footer { padding: 44px 0 100px; } /* padding inferior maior pra não cobrir com a barra fixa */
+            .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+
+            /* Esconde WhatsApp flutuante no mobile (já tem barra fixa) */
+            .whats-flutuante { display: none; }
+
+            /* MOSTRA a barra fixa inferior no mobile */
+            .barra-mobile { display: flex; }
+
+            /* Espaço extra antes do final pra última seção não ficar coberta */
+            body { padding-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Top Bar ===== -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-info">
+                <span>📞 (31) 99246-7257</span>
+                <span>✉️ romulorlx@hotmail.com</span>
+                <span>📍 Belo Horizonte / MG</span>
+            </div>
+            <div class="top-bar-social">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="https://wa.me/5531992467257" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-icone">+</span>
+                <div>
+                    <div>Rômulo Rogério</div>
+                    <small>Corretor de Planos de Saúde</small>
+                </div>
+            </a>
+            <div class="header-acoes">
+                <a href="tel:+5531992467257" class="btn-telefone">📞 (31) 99246-7257</a>
+                <a href="#formulario" class="btn-whatsapp-header">
+                    <span>💬</span>
+                    <span>Fazer Cotação</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero (centralizado, sem card de preço) ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-conteudo">
+                <span class="badge">⚡ Cotação em até 5 minutos no WhatsApp</span>
+                <h1>O plano de saúde ideal para você ou sua empresa</h1>
+                <p class="hero-subtitulo">Compare as melhores operadoras do mercado, com consultoria gratuita, sem custo de corretagem e atendimento direto no WhatsApp.</p>
+                <div class="hero-ctas">
+                    <a href="#formulario" class="btn-primario">
+                        <span>💬</span> Quero Minha Cotação Grátis
+                    </a>
+                    <a href="tel:+5531992467257" class="btn-secundario">
+                        <span>📞</span> Falar por Telefone
+                    </a>
+                </div>
+                <div class="hero-selos">
+                    <div class="hero-selo"><span class="check">✓</span> Sem custo de consultoria</div>
+                    <div class="hero-selo"><span class="check">✓</span> Atendimento humanizado</div>
+                    <div class="hero-selo"><span class="check">✓</span> Corretor certificado SUSEP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-numero">+10</div>
+                    <div class="stat-label">Operadoras Parceiras</div>
+                </div>
+                <div>
+                    <div class="stat-numero">+5.000</div>
+                    <div class="stat-label">Clientes Atendidos</div>
+                </div>
+                <div>
+                    <div class="stat-numero">10+</div>
+                    <div class="stat-label">Anos de Mercado</div>
+                </div>
+                <div>
+                    <div class="stat-numero">4.9★</div>
+                    <div class="stat-label">Avaliação Média</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Tipos de plano ===== -->
+    <section class="secao">
+        <div class="container">
+            <div class="secao-titulo">
+                <span class="sobretitulo">Para Cada Perfil</span>
+                <h2>Tipos de Planos que Trabalhamos</h2>
+                <p>Soluções sob medida para indivíduos, famílias, empresas e a melhor idade.</p>
+            </div>
+            <div class="tipos-grid">
+                <div class="tipo-card">
+                    <div class="icone">👨‍👩‍👧</div>
+                    <h3>Individual / Familiar</h3>
+                    <p>Cobertura completa para você e sua família, com acomodação enfermaria ou apartamento.</p>
+                </div>
+                <div class="tipo-card">
+                    <span class="tag">+ ECONOMIA</span>
+                    <div class="icone">🏢</div>
+                    <h3>Empresarial</h3>
+                    <p>Planos PME a partir de 2 vidas, com até 60% de desconto vs. plano individual.</p>
+                </div>
+                <div class="tipo-card">
+                    <div class="icone">👴</div>
+                    <h3>Sênior</h3>
+                    <p>Atendimento especializado, condições facilitadas e foco em qualidade de vida acima dos 59 anos.</p>
+                </div>
+                <div class="tipo-card">
+                    <div class="icone">🎓</div>
+                    <h3>Por Adesão</h3>
+                    <p>Para profissionais com entidade de classe (CRC, OAB, CRM, CRA e mais). Excelente custo-benefício.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Operadoras ===== -->
+    <section class="secao secao-alt">
+        <div class="container">
+            <div class="secao-titulo">
+                <span class="sobretitulo">Parceiros</span>
+                <h2>Trabalhamos com as Maiores Operadoras</h2>
+                <p>Acesso direto às melhores condições, tabelas atualizadas e atendimento prioritário.</p>
+            </div>
+            <div class="operadoras-grid">
+                <div class="operadora-card"><span class="operadora-nome">SulAmérica</span></div>
+                <div class="operadora-card"><span class="operadora-nome">Amil</span></div>
+                <div class="operadora-card"><span class="operadora-nome">Bradesco Saúde</span></div>
+                <div class="operadora-card"><span class="operadora-nome">Unimed</span></div>
+                <div class="operadora-card"><span class="operadora-nome">Hapvida</span></div>
+                <div class="operadora-card"><span class="operadora-nome">NotreDame</span></div>
+                <div class="operadora-card"><span class="operadora-nome">Usisaúde</span></div>
+                <div class="operadora-card"><span class="operadora-nome">You Saúde</span></div>
+                <div class="operadora-card"><span class="operadora-nome">MedSênior</span></div>
+                <div class="operadora-card"><span class="operadora-nome">MedGold</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Formulário ===== -->
+    <section class="secao" id="formulario">
+        <div class="container">
+            <div class="secao-titulo">
+                <span class="sobretitulo">Solicite sua Cotação</span>
+                <h2>Receba sua Cotação Personalizada</h2>
+                <p>Preencha os dados abaixo e fale com um especialista direto no WhatsApp.</p>
+            </div>
+            <div class="form-wrapper">
+                <div class="form-info">
+                    <h3>Por que cotar com a gente?</h3>
+                    <p>Mais de uma década ajudando pessoas e empresas a encontrarem o plano de saúde certo.</p>
+                    <ul>
+                        <li>Consultoria 100% gratuita</li>
+                        <li>Mais de 10 operadoras parceiras</li>
+                        <li>Sem custos escondidos</li>
+                        <li>Atendimento humanizado e ágil</li>
+                        <li>Apoio na portabilidade do plano atual</li>
+                    </ul>
+                    <div class="form-info-contato">
+                        <strong>📞 (31) 99246-7257</strong>
+                        Atendimento de Segunda a Sábado, das 8h às 20h.
+                    </div>
+                </div>
+
+                <form class="formulario" id="formCotacao" novalidate>
+                    <h3>Solicite agora — é grátis</h3>
+                    <p>Resposta em até 5 minutos no WhatsApp.</p>
+
+                    <div class="form-grupo">
+                        <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-grupo">
+                            <label for="whatsapp">WhatsApp (com DDD) <span class="obrigatorio">*</span></label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(31) 99999-9999" required>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="vidas">Número de Vidas <span class="obrigatorio">*</span></label>
+                            <input type="number" id="vidas" name="vidas" min="1" placeholder="Ex: 2" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="tipoPlano">Tipo de Plano <span class="obrigatorio">*</span></label>
+                        <select id="tipoPlano" name="tipoPlano" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="Individual/Familiar">Individual / Familiar</option>
+                            <option value="Empresarial">Empresarial (PME)</option>
+                            <option value="Sênior">Sênior (59+)</option>
+                            <option value="Por Adesão">Por Adesão (entidade de classe)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label>Já possui plano de saúde? <span class="obrigatorio">*</span></label>
+                        <div class="pill-grupo">
+                            <input type="radio" id="planoSim" name="jaPossuiPlano" value="Sim, quero trocar" required>
+                            <label for="planoSim">Sim, quero trocar</label>
+
+                            <input type="radio" id="planoPort" name="jaPossuiPlano" value="Sim, quero portabilidade">
+                            <label for="planoPort">Quero portabilidade</label>
+
+                            <input type="radio" id="planoNao" name="jaPossuiPlano" value="Não, primeiro plano">
+                            <label for="planoNao">Não tenho</label>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="operadora">Operadora de Preferência</label>
+                        <select id="operadora" name="operadora">
+                            <option value="Sem preferência">Sem preferência</option>
+                            <option value="SulAmérica">SulAmérica</option>
+                            <option value="Amil">Amil</option>
+                            <option value="Bradesco Saúde">Bradesco Saúde</option>
+                            <option value="Unimed">Unimed</option>
+                            <option value="Hapvida">Hapvida</option>
+                            <option value="NotreDame">NotreDame</option>
+                            <option value="Usisaúde">Usisaúde</option>
+                            <option value="You Saúde">You Saúde</option>
+                            <option value="MedSênior">MedSênior</option>
+                            <option value="MedGold">MedGold</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">
+                        <span>💬</span>
+                        <span>Enviar pelo WhatsApp</span>
+                    </button>
+
+                    <p class="form-aviso">🔒 Seus dados estão seguros e não serão compartilhados.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Depoimentos ===== -->
+    <section class="secao">
+        <div class="container">
+            <div class="secao-titulo">
+                <span class="sobretitulo">Quem já contratou</span>
+                <h2>O que dizem nossos clientes</h2>
+                <p>Mais de 5.000 famílias e empresas atendidas com excelência.</p>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="texto">"Atendimento muito rápido pelo WhatsApp e me apresentaram 3 opções dentro do meu orçamento. Em 2 dias estava com o plano contratado."</p>
+                    <div class="depoimento-pessoa">
+                        <div class="avatar">JM</div>
+                        <div>
+                            <strong>Juliana Martins</strong>
+                            <small>Plano Familiar</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="texto">"Contratei para minha empresa (8 vidas). Economizei quase 40% vs. o plano antigo e o atendimento continuou sendo top depois da contratação."</p>
+                    <div class="depoimento-pessoa">
+                        <div class="avatar">RC</div>
+                        <div>
+                            <strong>Rafael Carvalho</strong>
+                            <small>Plano Empresarial</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="texto">"Cuidaram da migração com toda a documentação. Sem dor de cabeça. Indico de olhos fechados pra qualquer pessoa."</p>
+                    <div class="depoimento-pessoa">
+                        <div class="avatar">CS</div>
+                        <div>
+                            <strong>Cláudia Souza</strong>
+                            <small>Portabilidade</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">
+                        <span class="logo-icone">+</span>
+                        <div>
+                            <div>Rômulo Rogério</div>
+                            <small>Corretor de Planos de Saúde</small>
+                        </div>
+                    </div>
+                    <p>Corretor habilitado com mais de uma década no mercado de saúde suplementar.</p>
+                    <div class="footer-redes">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Facebook">📘</a>
+                        <a href="https://wa.me/5531992467257" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Planos</h4>
+                    <ul>
+                        <li>Individual / Familiar</li>
+                        <li>Empresarial</li>
+                        <li>Sênior</li>
+                        <li>Por Adesão</li>
+                        <li>Odontológico</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Operadoras</h4>
+                    <ul>
+                        <li>SulAmérica · Amil</li>
+                        <li>Bradesco · Unimed</li>
+                        <li>Hapvida · NotreDame</li>
+                        <li>Usisaúde · You Saúde</li>
+                        <li>MedSênior · MedGold</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>📞 (31) 99246-7257</li>
+                        <li>✉️ romulorlx@hotmail.com</li>
+                        <li>📍 Belo Horizonte / MG</li>
+                        <li>🕒 Seg-Sáb · 8h às 20h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Rômulo Rogério — Corretor de Planos de Saúde. Todos os direitos reservados. Certificado SUSEP.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WhatsApp Flutuante (desktop) ===== -->
+    <a href="https://wa.me/5531992467257" target="_blank" rel="noopener" class="whats-flutuante" title="Fale conosco no WhatsApp">💬</a>
+
+    <!-- ===== Barra fixa inferior (mobile) ===== -->
+    <div class="barra-mobile">
+        <a href="tel:+5531992467257" class="btn-ligar" aria-label="Ligar">📞</a>
+        <a href="#formulario" class="btn-cotar">
+            <span>💬</span>
+            <span>Solicitar Cotação</span>
+        </a>
+    </div>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        (function () {
+            'use strict';
+
+            const NUMERO_WHATSAPP = '5531992467257';
+            const form = document.getElementById('formCotacao');
+
+            // Máscara WhatsApp (BR)
+            const inputWhats = document.getElementById('whatsapp');
+            inputWhats.addEventListener('input', function (e) {
+                let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+                if (v.length > 6) {
+                    e.target.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+                } else if (v.length > 2) {
+                    e.target.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+                } else if (v.length > 0) {
+                    e.target.value = `(${v}`;
+                } else {
+                    e.target.value = '';
+                }
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const nome = document.getElementById('nome').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value.trim();
+                const tipoPlano = document.getElementById('tipoPlano').value;
+                const vidas = document.getElementById('vidas').value.trim();
+                const operadora = document.getElementById('operadora').value || 'Sem preferência';
+                const jaPossuiRadio = document.querySelector('input[name="jaPossuiPlano"]:checked');
+                const jaPossui = jaPossuiRadio ? jaPossuiRadio.value : '';
+
+                if (!nome || !whatsapp || !tipoPlano || !vidas || !jaPossui) {
+                    alert('Por favor, preencha todos os campos obrigatórios (*), incluindo se já possui plano.');
+                    return;
+                }
+                if (whatsapp.replace(/\D/g, '').length < 10) {
+                    alert('Informe um número de WhatsApp válido com DDD.');
+                    return;
+                }
+
+                const mensagem =
+                    `Olá Rômulo! Gostaria de fazer uma cotação de plano de saúde.\n\n` +
+                    `*Nome:* ${nome}\n` +
+                    `*WhatsApp:* ${whatsapp}\n` +
+                    `*Tipo de Plano:* ${tipoPlano}\n` +
+                    `*Número de Vidas:* ${vidas}\n` +
+                    `*Já possui plano?:* ${jaPossui}\n` +
+                    `*Operadora de Preferência:* ${operadora}\n\n` +
+                    `Aguardo o contato. Obrigado(a)!`;
+
+                const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
+            });
+        })();
+    </script>
+
+</body>
+</html>
