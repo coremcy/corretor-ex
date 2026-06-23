@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maurício Bossi | Personal Trainer</title>
+  <meta name="description" content="Consultoria especializada em treinamento personalizado com avaliação física, mobilidade e evolução de carga. Prof. Maurício Bossi."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e8c96e;
+      --dark: #0a0a0a;
+      --dark2: #111111;
+      --dark3: #1a1a1a;
+      --gray: #888;
+      --white: #f5f5f5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 18px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem; letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none;
+      font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-text { z-index: 2; }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .75rem; letter-spacing: 3px; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 2px;
+      margin-bottom: 24px;
+      animation: fadeUp .8s ease both;
+    }
+    .hero-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      animation: fadeUp .9s .1s ease both;
+    }
+    .hero-name span { color: var(--gold); }
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 1.05rem; font-weight: 300; color: #bbb;
+      max-width: 420px; line-height: 1.8;
+      animation: fadeUp 1s .2s ease both;
+    }
+    .hero-cta {
+      margin-top: 40px;
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 1s .35s ease both;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #000; font-weight: 700;
+      padding: 15px 36px; border-radius: 4px;
+      text-decoration: none; font-size: .9rem; letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .3s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--gold); color: var(--gold);
+      padding: 13px 34px; border-radius: 4px;
+      text-decoration: none; font-size: .9rem; letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .3s, color .3s, transform .2s;
+    }
+    .btn-outline:hover { background: var(--gold); color: #000; transform: translateY(-2px); }
+
+    /* photo side */
+    .hero-photo-wrap {
+      display: flex; justify-content: flex-end; align-items: flex-end;
+      z-index: 2; position: relative;
+      animation: fadeIn 1.2s ease both;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; bottom: -10px; right: 20px;
+      width: 75%; height: 85%;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      z-index: 0;
+      opacity: .5;
+    }
+    .hero-img {
+      width: 100%; max-width: 400px;
+      height: 580px; object-fit: cover; object-position: top center;
+      border-radius: 4px;
+      position: relative; z-index: 1;
+      filter: contrast(1.05);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--gold);
+      padding: 28px 80px;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: #000;
+    }
+    .stat-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #333; margin-top: 2px;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 100px 80px; }
+    .section-tag {
+      font-size: .72rem; letter-spacing: 4px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      text-transform: uppercase; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .section-title span { color: var(--gold); }
+    .section-desc {
+      color: #aaa; font-size: 1rem; line-height: 1.9;
+      max-width: 560px;
+    }
+    .divider {
+      width: 60px; height: 3px;
+      background: var(--gold); margin: 20px 0;
+    }
+
+    /* ── CONSULTORIA ── */
+    #consultoria { background: var(--dark2); }
+    .consultoria-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px; margin-top: 60px;
+    }
+    .card {
+      background: var(--dark3);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color .3s, transform .3s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-6px); }
+    .card:hover::before { transform: scaleX(1); }
+    .card-icon { font-size: 2.4rem; margin-bottom: 18px; }
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 12px; color: var(--white);
+    }
+    .card-text { color: #888; font-size: .9rem; line-height: 1.8; }
+
+    /* ── BENEFÍCIOS ── */
+    #beneficios { background: var(--dark); }
+    .beneficios-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; margin-top: 60px;
+    }
+    .beneficio-item {
+      display: flex; gap: 18px; align-items: flex-start;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateX(-20px);
+      transition: all .6s ease;
+    }
+    .beneficio-item.visible { opacity: 1; transform: none; }
+    .beneficio-icon {
+      width: 50px; height: 50px; flex-shrink: 0;
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .beneficio-text h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 6px; color: var(--gold);
+    }
+    .beneficio-text p { color: #888; font-size: .88rem; line-height: 1.7; }
+    .beneficios-quote {
+      background: var(--dark3);
+      border-left: 4px solid var(--gold);
+      padding: 40px 36px; border-radius: 4px;
+    }
+    .beneficios-quote blockquote {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem; font-weight: 400; line-height: 1.5;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .beneficios-quote blockquote span { color: var(--gold); }
+    .beneficios-quote cite { color: #777; font-size: .85rem; letter-spacing: 1px; }
+
+    /* ── PLANOS ── */
+    #planos { background: var(--dark2); }
+    .planos-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px; margin-top: 28px;
+    }
+    .planos-subtitulo {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 56px; margin-bottom: 8px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--white);
+      border-left: 4px solid var(--gold); padding-left: 16px;
+    }
+    .planos-subtitulo small {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .75rem; color: var(--gold);
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.3);
+      padding: 3px 12px; border-radius: 20px;
+      letter-spacing: 1px; text-transform: none; font-weight: 600;
+    }
+    .plano-card {
+      background: var(--dark3);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 10px; padding: 40px 30px;
+      text-align: center; position: relative;
+      transition: transform .3s, border-color .3s;
+      display: flex; flex-direction: column;
+    }
+    .plano-card.destaque {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #1c1a12, var(--dark3));
+    }
+    .plano-card:hover { transform: translateY(-8px); }
+    .plano-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: #000;
+      font-size: .7rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 5px 18px; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .plano-freq {
+      font-size: .8rem; color: var(--gold); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .plano-nivel {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 3px 14px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .plano-nivel.mediano { background: rgba(100,120,180,.15); color: #8899dd; border: 1px solid rgba(100,120,180,.3); }
+    .plano-nivel.indicado { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid rgba(201,168,76,.3); }
+    .plano-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.4rem; color: var(--white); line-height: 1;
+    }
+    .plano-price span { font-size: 1.4rem; color: var(--gold); vertical-align: top; margin-top: 8px; display: inline-block; }
+    .plano-mes { font-size: .78rem; color: #666; margin-top: 6px; margin-bottom: 8px; letter-spacing: 1px; line-height: 1.6; }
+    .plano-alt-price {
+      font-size: .78rem; color: #888; margin-bottom: 20px;
+      background: rgba(201,168,76,.07);
+      border: 1px dashed rgba(201,168,76,.3);
+      border-radius: 6px; padding: 7px 12px;
+      line-height: 1.5;
+    }
+    .plano-alt-price strong { color: var(--gold-light); }
+    .plano-features { list-style: none; text-align: left; margin-bottom: 28px; flex: 1; }
+    .plano-features li {
+      padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+      color: #aaa; font-size: .87rem;
+      display: flex; gap: 10px; align-items: center;
+    }
+    .plano-features li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+    .btn-contratar {
+      display: block; width: 100%; text-align: center;
+      background: var(--gold); color: #000;
+      font-weight: 700; padding: 14px 20px; border-radius: 4px;
+      text-decoration: none; font-size: .85rem; letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .3s, transform .2s;
+      margin-top: auto;
+    }
+    .btn-contratar:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-contratar-outline {
+      display: block; width: 100%; text-align: center;
+      border: 2px solid var(--gold); color: var(--gold);
+      font-weight: 700; padding: 12px 20px; border-radius: 4px;
+      text-decoration: none; font-size: .85rem; letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .3s, color .3s, transform .2s;
+      margin-top: auto;
+    }
+    .btn-contratar-outline:hover { background: var(--gold); color: #000; transform: translateY(-2px); }
+
+    /* ── CTA FINAL ── */
+    #contato {
+      background: linear-gradient(135deg, #0e0c07 0%, #1a1500 50%, #0e0c07 100%);
+      text-align: center;
+    }
+    #contato .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+    #contato .section-desc { margin: 0 auto 48px; }
+    .contato-row {
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .whatsapp-btn {
+      background: #25D366; color: #000;
+      font-weight: 700; padding: 16px 40px;
+      border-radius: 4px; text-decoration: none;
+      font-size: .95rem; letter-spacing: 1px; text-transform: uppercase;
+      transition: background .3s, transform .2s;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .whatsapp-btn:hover { background: #1ebe5b; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      border-top: 1px solid rgba(201,168,76,.15);
+      padding: 36px 80px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    footer .logo { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 3px; color: var(--gold); }
+    footer p { color: #555; font-size: .8rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding: 120px 32px 60px; text-align: center; }
+      .hero-photo-wrap { justify-content: center; margin-top: 48px; }
+      .hero-cta { justify-content: center; }
+      .hero-sub { margin: 20px auto 0; }
+      section { padding: 72px 32px; }
+      .stats-bar { padding: 28px 32px; }
+      .beneficios-layout { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; text-align: center; padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Maurício Bossi</div>
+  <ul class="nav-links">
+    <li><a href="#consultoria">Consultoria</a></li>
+    <li><a href="#beneficios">Benefícios</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Personal Trainer Especializado</div>
+    <h1 class="hero-name">Maurício<br/><span>Bossi</span></h1>
+    <p class="hero-sub">
+      Transforme seu corpo e sua vida com uma consultoria de treinamento que vai além da academia.
+      Método personalizado, resultados reais.
+    </p>
+    <div class="hero-cta">
+      <a href="#planos" class="btn-primary">Ver Planos</a>
+      <a href="#consultoria" class="btn-outline">Saiba Mais</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <img src="Screenshot_1.png" alt="Prof. Maurício Bossi — Personal Trainer" class="hero-img"/>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Personalizado</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">+5 anos</div>
+    <div class="stat-label">de Experiência</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Pilares de Evolução</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Resultados Possíveis</div>
+  </div>
+</div>
+
+<!-- CONSULTORIA -->
+<section id="consultoria">
+  <div class="section-tag">O que ofereço</div>
+  <h2 class="section-title">Consultoria <span>Especializada</span></h2>
+  <div class="divider"></div>
+  <p class="section-desc">Cada aluno é único. Por isso meu método começa com uma avaliação completa e evolui de forma progressiva e segura, respeitando seu ritmo.</p>
+
+  <div class="consultoria-grid">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Avaliação Física</div>
+      <p class="card-text">Diagnóstico completo do seu nível de condicionamento, composição corporal e histórico de saúde para montar um plano sob medida.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <div class="card-title">Mobilidade & Flexibilidade</div>
+      <p class="card-text">Trabalho específico de amplitude de movimento para prevenir lesões, melhorar postura e potencializar cada exercício.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Evolução de Carga</div>
+      <p class="card-text">Progressão estratégica e segura das cargas, garantindo ganhos contínuos sem platôs e sem riscos à sua integridade física.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Treino Personalizado</div>
+      <p class="card-text">Periodização inteligente com treinos adaptados aos seus objetivos: emagrecimento, hipertrofia, condicionamento ou saúde.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="section-tag">Por que se mover?</div>
+  <h2 class="section-title">Benefícios da <span>Atividade Física</span></h2>
+  <div class="divider"></div>
+
+  <div class="beneficios-layout">
+    <div>
+      <div class="beneficio-item">
+        <div class="beneficio-icon">❤️</div>
+        <div class="beneficio-text">
+          <h4>Saúde Cardiovascular</h4>
+          <p>Reduz o risco de doenças cardíacas, controla a pressão arterial e melhora a circulação sanguínea.</p>
+        </div>
+      </div>
+      <div class="beneficio-item">
+        <div class="beneficio-icon">🧠</div>
+        <div class="beneficio-text">
+          <h4>Saúde Mental</h4>
+          <p>Libera endorfina, combate ansiedade e depressão, melhora o sono e aumenta a disposição no dia a dia.</p>
+        </div>
+      </div>
+      <div class="beneficio-item">
+        <div class="beneficio-icon">💪</div>
+        <div class="beneficio-text">
+          <h4>Força & Corpo</h4>
+          <p>Ganho de massa muscular, redução de gordura, mais energia e autoestima elevada.</p>
+        </div>
+      </div>
+      <div class="beneficio-item">
+        <div class="beneficio-icon">🦴</div>
+        <div class="beneficio-text">
+          <h4>Longevidade</h4>
+          <p>Fortalece ossos e articulações, prevenindo osteoporose e mantendo a qualidade de vida com o passar dos anos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="beneficios-quote">
+      <blockquote>
+        "Seu corpo é capaz de muito mais do que sua mente imagina. <span>Eu te mostro o caminho.</span>"
+      </blockquote>
+      <cite>— Maurício Bossi · Personal Trainer</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="section-tag">Investimento</div>
+  <h2 class="section-title">Escolha seu <span>Plano</span></h2>
+  <div class="divider"></div>
+  <p class="section-desc">Treinamento presencial ou online — escolha o formato ideal para a sua rotina e objetivos.</p>
+
+  <!-- PRESENCIAL -->
+  <div class="planos-subtitulo">🏋️ Treino Presencial <small>Valor hora-aula: R$ 60,00</small></div>
+  <div class="planos-grid">
+
+    <div class="plano-card">
+      <div class="plano-freq">2× por semana</div>
+      <div class="plano-nivel mediano">Mediano</div>
+      <div class="plano-price"><span>R$</span>480</div>
+      <div class="plano-mes">mês 4 semanas &nbsp;·&nbsp; 8 aulas &nbsp;·&nbsp; R$ 60/hora-aula</div>
+      <div class="plano-alt-price">Mês 5 semanas (10 aulas): <strong>R$ 600,00</strong></div>
+      <ul class="plano-features">
+        <li>Avaliação física completa</li>
+        <li>Treino 100% personalizado</li>
+        <li>Trabalho de mobilidade</li>
+        <li>Progressão de cargas</li>
+        <li>Suporte via WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Tenho%20interesse%20no%20plano%20Presencial%202x%20por%20semana.%20Podemos%20conversar%3F" target="_blank" class="btn-contratar-outline">Contratar este pacote</a>
+    </div>
+
+    <div class="plano-card destaque">
+      <div class="plano-badge">Mais Popular</div>
+      <div class="plano-freq">3× por semana</div>
+      <div class="plano-nivel indicado">Indicado</div>
+      <div class="plano-price"><span>R$</span>720</div>
+      <div class="plano-mes">mês 4 semanas &nbsp;·&nbsp; 12 aulas &nbsp;·&nbsp; R$ 60/hora-aula</div>
+      <div class="plano-alt-price">Mês 5 semanas (15 aulas): <strong>R$ 900,00</strong></div>
+      <ul class="plano-features">
+        <li>Avaliação física completa</li>
+        <li>Treino 100% personalizado</li>
+        <li>Trabalho de mobilidade</li>
+        <li>Progressão de cargas</li>
+        <li>Suporte via WhatsApp</li>
+        <li>Evolução acelerada</li>
+      </ul>
+      <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Tenho%20interesse%20no%20plano%20Presencial%203x%20por%20semana.%20Podemos%20conversar%3F" target="_blank" class="btn-contratar">Contratar este pacote</a>
+    </div>
+
+  </div>
+
+  <!-- ONLINE -->
+  <div class="planos-subtitulo">💻 Consultoria Online</div>
+  <div class="planos-grid">
+
+    <div class="plano-card">
+      <div class="plano-freq">Mensal</div>
+      <div class="plano-price"><span>R$</span>200</div>
+      <div class="plano-mes">por mês</div>
+      <ul class="plano-features">
+        <li>Plano de treino personalizado</li>
+        <li>Planilha de treino detalhada</li>
+        <li>Orientação de execução (vídeos)</li>
+        <li>Suporte via WhatsApp</li>
+        <li>Revisão mensal do plano</li>
+      </ul>
+      <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Tenho%20interesse%20na%20Consultoria%20Online%20Mensal%20(R%24%20200%2Fm%C3%AAs).%20Podemos%20conversar%3F" target="_blank" class="btn-contratar-outline">Contratar este pacote</a>
+    </div>
+
+    <div class="plano-card destaque">
+      <div class="plano-badge">Melhor Custo</div>
+      <div class="plano-freq">Trimestral</div>
+      <div class="plano-price"><span>R$</span>300</div>
+      <div class="plano-mes">a cada 3 meses &nbsp;·&nbsp; economia de R$ 300</div>
+      <ul class="plano-features">
+        <li>Plano de treino personalizado</li>
+        <li>Planilha de treino detalhada</li>
+        <li>Orientação de execução (vídeos)</li>
+        <li>Suporte via WhatsApp</li>
+        <li>Revisões a cada 4 semanas</li>
+        <li>Acompanhamento de evolução</li>
+      </ul>
+      <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Tenho%20interesse%20na%20Consultoria%20Online%20Trimestral%20(R%24%20300).%20Podemos%20conversar%3F" target="_blank" class="btn-contratar">Contratar este pacote</a>
+    </div>
+
+    <div class="plano-card">
+      <div class="plano-freq">Semestral</div>
+      <div class="plano-price"><span>R$</span>500</div>
+      <div class="plano-mes">a cada 6 meses &nbsp;·&nbsp; máxima transformação</div>
+      <ul class="plano-features">
+        <li>Plano de treino personalizado</li>
+        <li>Planilha de treino detalhada</li>
+        <li>Orientação de execução (vídeos)</li>
+        <li>Suporte via WhatsApp</li>
+        <li>Revisões periódicas</li>
+        <li>Acompanhamento completo</li>
+        <li>Relatório de evolução semestral</li>
+      </ul>
+      <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Tenho%20interesse%20na%20Consultoria%20Online%20Semestral%20(R%24%20500).%20Podemos%20conversar%3F" target="_blank" class="btn-contratar-outline">Contratar este pacote</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="contato">
+  <div class="section-tag">Vamos começar?</div>
+  <h2 class="section-title">Dê o <span>Primeiro Passo</span><br/>Hoje</h2>
+  <div class="divider" style="margin: 20px auto;"></div>
+  <p class="section-desc">
+    Entre em contato agora e agende sua avaliação gratuita. Sem compromisso — só resultados.
+  </p>
+  <div class="contato-row">
+    <a href="https://wa.me/?text=Ol%C3%A1%20Maur%C3%ADcio!%20Quero%20saber%20mais%20sobre%20a%20consultoria%20de%20treino." class="whatsapp-btn" target="_blank">
+      💬 Falar no WhatsApp
+    </a>
+    <a href="#planos" class="btn-outline">Ver Planos</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Maurício Bossi · Personal Trainer</div>
+  <p>© 2026 Maurício Bossi — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  // Scroll animation for benefit items
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.beneficio-item').forEach(el => observer.observe(el));
+
+  // Nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let pos = window.scrollY + 80;
+    sections.forEach(s => {
+      const link = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+      if (!link) return;
+      if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) {
+        link.style.color = 'var(--gold)';
+      } else {
+        link.style.color = '';
+      }
+    });
+  });
+</script>
+</body>
+</html>
